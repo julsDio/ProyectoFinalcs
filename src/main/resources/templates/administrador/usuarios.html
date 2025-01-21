@@ -9,62 +9,117 @@
   <meta name="author" content="">
 
   <title>Morita S.A</title>
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+  <style>
+    h1 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+      color: #333;
+    }
 
+    small {
+      font-size: 0.8em;
+      color: #666;
+    }
 
-  <!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+    .breadcrumb {
+      background: none;
+      padding: 0;
+      margin: 10px 0;
+      list-style: none;
+    }
 
-<!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+    .breadcrumb-item {
+      display: inline;
+      margin-right: 5px;
+    }
+
+    .breadcrumb-item a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .breadcrumb-item.active {
+      color: #666;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
 
 </head>
 
 <body>
 
-  <!-- Navigation -->
+  <!-- navegacion que esta en el template admin -->
   <div th:include="administrador/template_admin.html::header"></div>
 
-<!-- Page Content -->
-<div class="container">
+  <div class="container">
+    <h1>
+      Morita S.A <small>Usuarios</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item active">Ver Usuarios</li>
+    </ol>
+
+    <h2>Usuarios</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="usuario:${usuarios}">
+          <td th:text="${usuario.nombre}"></td>
+          <td th:text="${usuario.email}"></td>
+          <td th:text="${usuario.direccion}"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
 
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">
-    Morita S.A <small>Usuarios</small>
-  </h1>
+  <!-- Footer -->
+  <div th:include="administrador/template_admin.html::footer"></div>
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-    <li class="breadcrumb-item active">Ver Usuarios</li>
-  </ol>
-  <h2>Usuarios</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Email</th>
-        <th scope="col">Dirección</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="usuario:${usuarios}">
-        <td th:text="${usuario.nombre}"></td>
-        <td th:text="${usuario.email}"></td>
-        <td th:text="${usuario.direccion}"></td>
-      </tr>       
-    </tbody>
-  </table>
-
-</div>
-<!-- /.container -->
-
-<!-- Footer -->
-<div th:include="administrador/template_admin.html::footer"></div>
-
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 

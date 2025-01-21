@@ -7,77 +7,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
 
   <title> Morita S.A </title>
+  <style>
 
+    h2 {
+      text-align: center;
+      color: #333;
+    }
 
-  <!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      margin-bottom: 30px;
 
-<!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #922f2f;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
 
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  	<div th:include="administrador/template_admin.html::header"></div>
+  <div th:include="administrador/template_admin.html::header"></div>
 
-    <!-- Page Content -->
-    <div class="container">
+  <div class="container">
 
+    <h1 class="mt-4 mb-3">
+      Morita S.A <small>Detalles</small>
+    </h1>
 
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">
-        Morita S.A <small>Detalles</small>
-      </h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item"><a th:href="@{/usuario/compras}"></li>
+      <li class="breadcrumb-item active">Detalle de Compra</li>
+    </ol>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item"><a href="compras.html">Compras</a></li>
-        <li class="breadcrumb-item active">Detalle de Compra</li>
-      </ol>
-
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-           <div class="col-lg-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Producto</th>                  
-                  <th scope="col">Precio</th>
-                  <th scope="col">Total</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="detalle:${detalles}">
-                  <td th:text="${detalle.cantidad}"></td>
-                  <td th:text="${detalle.nombre}"></td>
-                  <td th:text="${detalle.precio}"></td>
-                  <td th:text="${detalle.total}"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h2>Detalles de Productos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="detalle:${detalles}">
+            <td th:text="${detalle.cantidad}"></td>
+            <td th:text="${detalle.nombre}"></td>
+            <td th:text="${detalle.precio}"></td>
+            <td th:text="${detalle.total}"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
   </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-	<div th:include="administrador/template_admin.html::footer"></div>
-
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </div>
+  
+  <div th:include="administrador/template_admin.html::footer"></div>
+  
+	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 
 </html>
-

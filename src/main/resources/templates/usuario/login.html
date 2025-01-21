@@ -10,13 +10,78 @@
 
   <title>Morita S.A</title>
 
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+  <style>
 
-  <!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+    .container2{
+      max-width: 500px;
+      margin: auto;
+      border-radius: 8px;
+      padding:20px;
+    }
 
-<!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+    h2 {
+      margin: 70px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #326410;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #4cc913;
+    }
+
+    .card-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    footer{
+      margin-top: 200px;
+
+    }
+  </style>
 
 </head>
 
@@ -28,7 +93,8 @@
       <a class="navbar-brand" th:href="@{/}">Morita S.A</a>
 
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -37,56 +103,40 @@
             <a class="nav-link" th:href="@{/usuario/login}">Login</a>
           </li>
         </ul>
-      </div>    
+      </div>
     </div>
   </nav>
 
 
-  <!-- Page Content -->
-  <div class="container">
+  <div class="container2">
 
-    <div class="card mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h2>Ingresar</h2>
+    <h2>Ingresar</h2>
 
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <form  th:action="@{/usuario/acceder}" method="post">
+    <form th:action="@{/usuario/acceder}" method="post">
       <div class="form-group">
-        <label for="email"> Email:  </label>      
-        <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off"> 
-
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off">
       </div>
 
       <div class="form-group">
-        <label for="pwd"> Contraseña:</label>
-        <input type="password"  class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>       
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
       </div>
 
       <div class="form-group">
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-dark"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
-        </div>      
-      </div>    
+        <button type="submit">Ingresar</button>
+      </div>
     </form>
-    <a th:href="@{/usuario/registro}" class="card-link">Si aún no tiene cuenta aqui puede registrarse</a>
+
+    <a th:href="@{/usuario/registro}" class="card-link">Si aún no tiene cuenta aquí puede registrarse</a>
   </div>
-  <!-- /.container -->
 
   <!-- Footer -->
- <div th:include="usuario/template_usuario.html::footer"></div>
+  <div th:include="usuario/template_usuario.html::footer"></div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 

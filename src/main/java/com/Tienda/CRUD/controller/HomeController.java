@@ -190,7 +190,7 @@ public class HomeController {
         }
 
         ///limpiar lista y orden
-		orden = new Orden();
+	orden = new Orden();
         detalles.clear();
 
         return "redirect:/";

@@ -19,6 +19,81 @@
 <!-- Custom styles for this template -->
 <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
 
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f4f4f4;
+		margin: 0;
+		padding: 20px;
+	}
+	.container {
+		max-width: 1200px;
+		margin: auto;
+	}
+	h1 {
+		margin-top: 20px;
+		margin-bottom: 10px;
+		font-size: 2.5em;
+		color: #333;
+	}
+	small {
+		font-size: 0.8em;
+		color: #666;
+	}
+	.breadcrumb {
+		background: none;
+		padding: 0;
+		margin: 10px 0;
+		list-style: none;
+	}
+	.breadcrumb-item {
+		display: inline;
+		margin-right: 5px;
+	}
+	.breadcrumb-item a {
+		text-decoration: none;
+		color: #007bff;
+	}
+	.breadcrumb-item.active {
+		color: #666;
+	}
+	.card {
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		padding: 20px;
+		margin-bottom: 20px;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-top: 20px;
+	}
+	th, td {
+		padding: 12px;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
+	}
+	th {
+		background-color: #f2f2f2;
+		color: #333;
+	}
+	tr:hover {
+		background-color: #f1f1f1;
+	}
+	.btn {
+		background-color: #28a745;
+		color: white;
+		padding: 10px 15px;
+		text-decoration: none;
+		border-radius: 5px;
+		transition: background-color 0.3s;
+	}
+	.btn:hover {
+		background-color: #218838;
+	}
+</style>
+
 </head>
 
 <body>
@@ -26,50 +101,46 @@
 	<!-- Navigation -->
 	<div th:include="administrador/template_admin.html::header"></div>
 
-	<!-- Page Content -->
-	<div class="container">
+	
+    <div class="container">
 
+        <!-- Page Heading/Breadcrumbs -->
+        <h1>
+            Morita S.A <small>Ordenes</small>
+        </h1>
 
-		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">
-			Morita S.A <small>Ordenes</small>
-		</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Ordenes</li>
+        </ol>
 
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-			<li class="breadcrumb-item active">Ordenes</li>
-		</ol>
-
-		<!-- Blog Post -->
-		<div class="card mb-4">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-lg-12">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">No. de Orden</th>
-									<th scope="col">Fecha</th>
-									<th scope="col">Valor</th>
-									<th scope="col">Acción</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="orden:${ordenes}">
-									<td th:text="${orden.numero}"></td>
-									<td th:text="${orden.fechaCreacion}"></td>
-									<td th:text="${orden.total}"></td>
-									<td><a th:href="@{/administrador/detalle/{id} (id=${orden.id}) }" class="btn btn-success">Ver
-											Detalle</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.container -->
+        <!-- Blog Post -->
+        <div class="card">
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">No. de Orden</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="orden:${ordenes}">
+                            <td th:text="${orden.numero}"></td>
+                            <td th:text="${orden.fechaCreacion}"></td>
+                            <td th:text="${orden.total}"></td>
+                            <td>
+                                <a th:href="@{/administrador/detalle/{id} (id=${orden.id}) }" class="btn">Ver Detalle</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
 
 	<!-- Footer -->
 	<div th:include="administrador/template_admin.html::footer"></div>

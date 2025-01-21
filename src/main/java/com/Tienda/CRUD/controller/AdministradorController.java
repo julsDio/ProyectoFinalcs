@@ -30,7 +30,7 @@ public class AdministradorController {
     private UsuarioService usuarioService;
 
     @Autowired
-    private OrdenService ordensService;
+    private OrdenService ordenService;
 
     private Logger logg = LoggerFactory.getLogger(AdministradorController.class);
 
@@ -49,14 +49,14 @@ public class AdministradorController {
 
     @GetMapping("/ordenes")
     public String ordenes(Model model) {
-        model.addAttribute("ordenes", ordensService.findAll());
+        model.addAttribute("ordenes", ordenService.findAll());
         return "administrador/ordenes";
     }
 
     @GetMapping("/detalle/{id}")
     public String detalle(Model model, @PathVariable Integer id) {
         logg.info("Id de la orden {}", id);
-        Orden orden = ordensService.findById(id).get();
+        Orden orden = ordenService.findById(id).get();
         model.addAttribute("detalles", orden.getDetalle());
         return "administrador/detalleorden";
     }
