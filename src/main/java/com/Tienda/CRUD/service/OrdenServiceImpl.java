@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.Tienda.CRUD.service;
 
 import com.Tienda.CRUD.model.Orden;
@@ -13,23 +9,46 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Implementación de la interfaz {@link OrdenService} para manejar las operaciones
+ * relacionadas con las órdenes.
+ * Proporciona métodos para guardar, buscar y generar números únicos para las órdenes.
+ */
 @Service
 public class OrdenServiceImpl implements OrdenService {
 
     @Autowired
     private OrdenRepository ordenRepository;
 
+    /**
+     * Guarda una orden en la base de datos.
+     * Si la orden ya existe, la actualiza.
+     * 
+     * @param orden La orden a guardar.
+     * @return La orden guardada o actualizada.
+     */
     @Override
     public Orden save(Orden orden) {
         return ordenRepository.save(orden);
     }
 
+    /**
+     * Recupera todas las órdenes existentes en la base de datos.
+     * 
+     * @return Una lista con todas las órdenes.
+     */
     @Override
     public List<Orden> findAll() {
         return ordenRepository.findAll();
     }
-    // 0000010
+    
+    /**
+     * Genera un número único para identificar una nueva orden.
+     * El número es incremental y se formatea con ceros a la izquierda.
+     * 
+     * @return Un número de orden único como cadena formateada. //000001
+     */
+
 
     public String generarNumeroOrden() {
         int numero = 0;
@@ -61,11 +80,24 @@ public class OrdenServiceImpl implements OrdenService {
         return numeroConcatenado;
     }
 
+    /**
+     * Recupera las órdenes asociadas a un usuario específico.
+     * 
+     * @param usuario El usuario para el que se buscarán las órdenes.
+     * @return Una lista de órdenes asociadas al usuario.
+     */
     @Override
     public List<Orden> findByUsuario(Usuario usuario) {
         return ordenRepository.findByUsuario(usuario);
     }
 
+    /**
+     * Busca una orden específica por su identificador único.
+     * 
+     * @param id El identificador de la orden a buscar.
+     * @return Un {@link Optional} que contiene la orden si se encuentra,
+     *         o vacío si no existe.
+     */
     @Override
     public Optional<Orden> findById(Integer id) {
         return ordenRepository.findById(id);

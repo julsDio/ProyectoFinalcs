@@ -11,11 +11,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- *
- * @author Usuario
+ * Repositorio para realizar operaciones CRUD sobre la entidad Orden.
+ * Extiende JpaRepository para aprovechar las funcionalidades proporcionadas por Spring Data JPA.
+ * También se incluye un método personalizado para encontrar las órdenes de un usuario específico.
  */
 @Repository
 public interface OrdenRepository extends JpaRepository<Orden, Integer> {
+    
+    /**
+     * Método personalizado para obtener todas las órdenes de un usuario específico.
+     * @param usuario El usuario cuyas órdenes se desean obtener.
+     * @return Una lista de órdenes asociadas al usuario.
+     */
     List<Orden> findByUsuario (Usuario usuario);
     
 }

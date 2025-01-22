@@ -1,16 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.Tienda.CRUD.service;
 
 import com.Tienda.CRUD.model.DetalleOrden;
 
 /**
- *
- * @author Usuario
+ * Interfaz para el servicio de DetalleOrden.
+ * Define las operaciones relacionadas con la entidad DetalleOrden.
  */
 public interface DetalleOrdenService {
+    /**
+     * Guarda un objeto DetalleOrden en la base de datos.
+     *
+     * @param detalleorden Objeto DetalleOrden a guardar.
+     * @return El DetalleOrden que se ha guardado.
+     */
     DetalleOrden save (DetalleOrden detalleorden);
-    
 }
