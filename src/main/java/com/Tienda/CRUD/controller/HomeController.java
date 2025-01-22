@@ -4,7 +4,6 @@
  */
 package com.Tienda.CRUD.controller;
 
-
 import com.Tienda.CRUD.model.DetalleOrden;
 import com.Tienda.CRUD.model.Orden;
 import com.Tienda.CRUD.model.Producto;
@@ -30,10 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- *
- * @author Usuario
- */
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
